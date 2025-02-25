@@ -3,7 +3,7 @@ import smtplib
 from email.mime.text import MIMEText
 
 from division.config.settings import SMTP_HOST, SMTP_PORT, SMTP_TIMEOUT
-from division.utils.log import get_logger
+from division.utils.logger import get_logger
 
 log = get_logger()
 
