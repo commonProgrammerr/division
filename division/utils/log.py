@@ -12,8 +12,7 @@ formatter = logging.Formatter(
 
 
 def get_logger(log_file="division.log"):
-    handler = handlers.RotatingFileHandler(
-        log_file, maxBytes=1024 * 1024, backupCount=10)
+    handler = handlers.RotatingFileHandler(log_file, maxBytes=1024 * 1024, backupCount=10)
     handler.setLevel(LOG_LEVEL)
     handler.setFormatter(formatter)
     log.addHandler(handler)

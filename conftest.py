@@ -25,6 +25,6 @@ def setup_testing_database(request):
     test_db = str(tmpdir.join("database.test.db"))
 
     engine = create_engine(f"sqlite:///{test_db}")
-    models.SQLModel.metadata.create_all(bind=engine)
+    user.SQLModel.metadata.create_all(bind=engine)
     with patch("division.database.engine", engine):
         yield
