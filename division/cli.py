@@ -35,14 +35,16 @@ def validate(key, type):
     """Validate a given key..."""
     console = Console()
     try:
-        key = core.validate_access_key(key_type=type, key_value=key)
+        key = core.get_access_key_by_value(key_type=type, key_value=key)
         table = Table()
         table.add_column("User")
+        table.add_column("Role")
         table.add_column("Type")
         table.add_column("Expiration")
 
         table.add_row(
             key.user.name,
+            key.user.role.name,
             key.type.value,
             key.expiration.strftime(DATEFMT),
         )

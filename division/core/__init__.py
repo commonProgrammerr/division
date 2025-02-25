@@ -1,7 +1,7 @@
-from .validation import validate_access_key
+from .validation import get_access_key_by_value
 from division.tasks import WatchDog, mqtt
 
-__all__ = ["validate_access_key"]
+__all__ = ["get_access_key_by_value"]
 
 
 def watch_dog():

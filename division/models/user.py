@@ -19,3 +19,6 @@ class User(SQLModel, table=True):
 
     role: "Role" = Relationship(back_populates="users")
     keys: list["AccessKey"] = Relationship(back_populates="user")
+
+    def __str__(self) -> str:
+        return f"{self.name}"
