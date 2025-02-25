@@ -18,4 +18,7 @@ ALGORITHM: str = os.getenv("ALGORITHM", "")
 DATABASE_PATH = "/home/scorel/Documents/projects/poli_dti/dti_server/assets/database.db"
 DATABASE_URI = os.getenv("DATABASE_URI", f"sqlite:///{DATABASE_PATH}")
 
+MQTT_HOST: str = os.getenv("MQTT_HOST")
+MQTT_PORT = int(os.getenv("MQTT_PORT", 1883))
+
 DEFAULT_EXPIRATION_TIME = int(os.getenv("DEFAULT_EXPIRATION_TIME", 8784))

@@ -24,6 +24,11 @@ def main():
 
 
 @main.command()
+def start():
+    core.watch_dog()
+
+
+@main.command()
 @click.argument("key", type=click.STRING)
 @click.option("--type", default=AccessKeyType.PASSWORD, type=AccessKeyType)
 def validate(key, type):

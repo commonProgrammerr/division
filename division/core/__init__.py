@@ -1,19 +1,9 @@
-from division.models import AccessKey, AccessKeyType
+from .validation import validate_access_key
+from division.tasks import WatchDog, mqtt
 
-from division.database import engine
-from sqlmodel import Session, select
-from sqlalchemy.orm import selectinload
+__all__ = ["validate_access_key"]
 
 
-def validate_access_key(key_type: AccessKeyType, key_value: str):
-    with Session(engine) as session:
-        query = (
-            select(AccessKey)
-            .options(selectinload(AccessKey.user))
-            .where(AccessKey.type == key_type, AccessKey.value == key_value)
-        )
-
-        if not (key := session.exec(query).first()) or not key.enable:
-            raise RuntimeError("Invalid AccessKey!")
-
-        return key
+def watch_dog():
+    watch_dog = WatchDog(mqtt.CallbackAPIVersion.VERSION2)
+    watch_dog.start()
