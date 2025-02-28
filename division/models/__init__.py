@@ -1,6 +1,4 @@
 from sqlmodel import SQLModel
+from .access_key import AccessKey
+from .role import Role
 from .user import User
-from .permissions import AccessKey, AccessKeyType, Role
-
-
-__all__ = ["SQLModel", "User", "AccessKey", "AccessKeyType", "Role"]

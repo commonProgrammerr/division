@@ -3,12 +3,12 @@
 from fastapi import Depends
 from sqlmodel import Session, create_engine
 
-from division.config.settings import DATABASE_URI
+from division.config import settings
 from division import models
 from .seed import populate_database
 
 engine = create_engine(
-    DATABASE_URI,  # pyright: ignore
+    settings.DATABASE_URI,  # pyright: ignore
     echo=False,  # pyright: ignore
     # connect_args=settings.db.connect_args,  # pyright: ignore
 )

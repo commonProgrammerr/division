@@ -5,12 +5,13 @@ from sqlmodel import Field, Relationship, SQLModel
 from division.utils.security import HashedPassword
 
 if TYPE_CHECKING:
-    from division.models.permissions import AccessKey, Role
+    from division.models.access_key import AccessKey
+    from division.models.role import Role
 
 
 class User(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-    role_id: int = Field(foreign_key="role.id", nullable=False)
+    role_id: str = Field(foreign_key="role.name", nullable=False)
 
     name: str | None = Field(nullable=True)
     username: str = Field(nullable=False, unique=True, index=True)
