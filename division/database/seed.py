@@ -21,9 +21,10 @@ def populate_database(engine: Engine):
             session.add(models.AccessKey(user=admin, value="2444"))
 
     def add_roles(session: Session):
-        pass
+        roles = session.exec(select(models.Role.name)).all()
         for role in RoleLevel:
-            session.add(models.Role(name=role.name, level=role.value))
+            if role.name not in roles:
+                session.add(models.Role(name=role.name, level=role.value))
 
     with Session(engine) as session:
         add_roles(session)
