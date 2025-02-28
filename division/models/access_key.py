@@ -2,7 +2,7 @@ from typing import Optional, TYPE_CHECKING
 from datetime import datetime, timedelta
 
 from sqlmodel import Field, Relationship, SQLModel, UniqueConstraint
-from division.config.settings import DEFAULT_EXPIRATION_TIME
+from division.config import settings
 from division.utils.security import HashedPassword
 from .constraints import AccessKeyType
 
@@ -10,7 +10,7 @@ if TYPE_CHECKING:
     from division.models.user import User
 
 
-def get_expiration_key_date(delta=timedelta(hours=DEFAULT_EXPIRATION_TIME)):
+def get_expiration_key_date(delta=timedelta(hours=settings.DEFAULT_EXPIRATION_TIME)):
     return datetime.utcnow() + delta
 
 

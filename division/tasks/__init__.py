@@ -1,8 +1,8 @@
 import asyncio
 import paho.mqtt.client as mqtt
-from division.config.settings import MQTT_HOST, MQTT_PORT
+from division.config import settings
 from division.core.validation import get_access_key_by_value
-from division.models import AccessKeyType, AccessKey
+from division.models.constraints import AccessKeyType
 
 from division.utils.logger import get_logger
 from logging import WARNING, INFO
@@ -53,7 +53,7 @@ class WatchDog(mqtt.Client):
                 log.info(msg.topic + " " + str(msg.payload))
 
     async def run(self):
-        self.connect(host=MQTT_HOST, port=MQTT_PORT)
+        self.connect(host=settings.MQTT_HOST, port=settings.MQTT_PORT)
         return self.loop_forever()
 
     def start(self):

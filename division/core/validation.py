@@ -1,5 +1,5 @@
-from division.models import AccessKey, AccessKeyType, User, Role
-
+from division.models import AccessKey, User
+from division.models.constraints import AccessKeyType
 from division.database import engine
 from sqlmodel import Session, select
 from sqlalchemy.orm import joinedload
@@ -13,7 +13,7 @@ def get_access_key_by_value(key_type: AccessKeyType, key_value: str):
             .where(
                 AccessKey.type == key_type,
                 AccessKey.value == key_value,
-                AccessKey.enable == True,
+                AccessKey.enable == True,  # noqa: E712
             )
         )
 

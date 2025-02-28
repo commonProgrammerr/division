@@ -286,6 +286,7 @@ dependencies = [
     { name = "aiosmtpd" },
     { name = "alembic" },
     { name = "click" },
+    { name = "dynaconf" },
     { name = "fastapi" },
     { name = "httpx" },
     { name = "paho-mqtt" },
@@ -294,11 +295,13 @@ dependencies = [
     { name = "pydantic" },
     { name = "python-dotenv" },
     { name = "python-jose", extra = ["cryptography"] },
+    { name = "redis" },
     { name = "rich" },
     { name = "rich-click" },
     { name = "setuptools" },
     { name = "sqlalchemy" },
     { name = "sqlmodel" },
+    { name = "uuid" },
 ]
 
 [package.optional-dependencies]
@@ -324,6 +327,7 @@ requires-dist = [
     { name = "alembic", specifier = ">=1.13.3" },
     { name = "click", specifier = ">=8.1.7" },
     { name = "coverage", marker = "extra == 'test'", specifier = ">=7.6.4" },
+    { name = "dynaconf", specifier = ">=3.2.10" },
     { name = "fastapi", specifier = ">=0.115.8" },
     { name = "httpx", specifier = ">=0.27.2" },
     { name = "paho-mqtt", specifier = ">=2.1.0" },
@@ -335,12 +339,14 @@ requires-dist = [
     { name = "pytest-forked", marker = "extra == 'test'", specifier = ">=1.6.0" },
     { name = "python-dotenv", specifier = ">=1.0.1" },
     { name = "python-jose", extras = ["cryptography"], specifier = ">=3.4.0" },
+    { name = "redis", specifier = ">=5.2.1" },
     { name = "rich", specifier = ">=13.9.3" },
     { name = "rich-click", specifier = ">=1.8.3" },
     { name = "setuptools", specifier = ">=75.2.0" },
     { name = "sqlalchemy", specifier = "==1.4.35" },
     { name = "sqlmodel", specifier = ">=0.0.8" },
     { name = "types-setuptools", marker = "extra == 'test'", specifier = ">=75.2.0.20241025" },
+    { name = "uuid", specifier = ">=1.30" },
 ]
 provides-extras = ["test"]
 
@@ -357,6 +363,15 @@ name = "docopt"
 version = "0.6.2"
 source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/a2/55/8f8cab2afd404cf578136ef2cc5dfb50baa1761b68c9da1fb1e4eed343c9/docopt-0.6.2.tar.gz", hash = "sha256:49b3a825280bd66b3aa83585ef59c4a8c82f2c8a522dbe754a8bc8d08c85c491", size = 25901 }
+
+[[package]]
+name = "dynaconf"
+version = "3.2.10"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/98/a8/bd76f872481c783a7e29cf0d4eccf773b1a2418b971f389245964223dcd6/dynaconf-3.2.10.tar.gz", hash = "sha256:8dbeef31a2343c8342c9b679772c3d005b4801c587cf2f525f98f57ec2f607f1", size = 234228 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/06/02/3846e28288fa0ee0d45e3e01581629fbfcc1ca53121ad26e0f278daa8241/dynaconf-3.2.10-py2.py3-none-any.whl", hash = "sha256:7f70a4b8a8861efb88d8267aeb6f246c791dc34ecbb8299c26a19abd59113df6", size = 236203 },
+]
 
 [[package]]
 name = "ecdsa"
@@ -883,6 +898,15 @@ cryptography = [
 ]
 
 [[package]]
+name = "redis"
+version = "5.2.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/47/da/d283a37303a995cd36f8b92db85135153dc4f7a8e4441aa827721b442cfb/redis-5.2.1.tar.gz", hash = "sha256:16f2e22dff21d5125e8481515e386711a34cbec50f0e44413dd7d9c060a54e0f", size = 4608355 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/3c/5f/fa26b9b2672cbe30e07d9a5bdf39cf16e3b80b42916757c5f92bca88e4ba/redis-5.2.1-py3-none-any.whl", hash = "sha256:ee7e1056b9aea0f04c6c2ed59452947f34c4940ee025f5dd83e6a6418b6989e4", size = 261502 },
+]
+
+[[package]]
 name = "rich"
 version = "13.9.4"
 source = { registry = "https://pypi.org/simple" }
@@ -1079,6 +1103,12 @@ sdist = { url = "https://files.pythonhosted.org/packages/df/db/f35a00659bc03fec3
 wheels = [
     { url = "https://files.pythonhosted.org/packages/26/9f/ad63fc0248c5379346306f8668cda6e2e2e9c95e01216d2b8ffd9ff037d0/typing_extensions-4.12.2-py3-none-any.whl", hash = "sha256:04e5ca0351e0f3f85c6853954072df659d0d13fac324d0072316b67d7794700d", size = 37438 },
 ]
+
+[[package]]
+name = "uuid"
+version = "1.30"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/ce/63/f42f5aa951ebf2c8dac81f77a8edcc1c218640a2a35a03b9ff2d4aa64c3d/uuid-1.30.tar.gz", hash = "sha256:1f87cc004ac5120466f36c5beae48b4c48cc411968eed0eaecd3da82aa96193f", size = 5811 }
 
 [[package]]
 name = "watchdog"

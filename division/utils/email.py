@@ -2,7 +2,7 @@ import re
 import smtplib
 from email.mime.text import MIMEText
 
-from division.config.settings import SMTP_HOST, SMTP_PORT, SMTP_TIMEOUT
+from division.config import settings
 from division.utils.logger import get_logger
 
 log = get_logger()
@@ -30,7 +30,9 @@ def send_email(from_, to, subject, body):
         to = [to]
 
     try:
-        with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=SMTP_TIMEOUT) as server:
+        with smtplib.SMTP(
+            settings.SMTP_HOST, settings.SMTP_PORT, timeout=settings.SMTP_TIMEOUT
+        ) as server:
             message = MIMEText(body)
             message["From"] = from_
             message["To"] = ",".join(to)
