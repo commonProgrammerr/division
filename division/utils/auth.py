@@ -14,6 +14,7 @@ from sqlmodel import Session, select
 
 from division.config import settings
 from division.database import engine
+from division.models.constraints import RoleLevel
 from division.utils.security import verify_password
 from division.utils.session import get_session
 
@@ -168,7 +169,7 @@ async def validate_token(token: str = Depends(oauth2_scheme)) -> User:
 async def get_current_super_user(
     current_user: User = Depends(get_current_user),
 ) -> User:
-    if current_user.role.level is not UserRole.ADMIN:
+    if current_user.role.level != RoleLevel.ADMIN:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not a super user")
     return current_user
 
