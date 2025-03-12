@@ -29,20 +29,20 @@ class RoleLevel(Enum):
         if isinstance(value, int):
             return self.value >= value
 
-        return super().__eq__(value)
+        return super().__ge__(value)
 
     def __gt__(self, value):
         if isinstance(value, int):
             return self.value > value
-        return super().__eq__(value)
+        return super().__gt__(value)
 
     def __le__(self, value):
         if isinstance(value, int):
             return self.value <= value
 
-        return super().__eq__(value)
+        return super().__le__(value)
 
     def __lt__(self, value):
         if isinstance(value, int):
             return self.value < value
-        return super().__eq__(value)
+        return super().__lt__(value)

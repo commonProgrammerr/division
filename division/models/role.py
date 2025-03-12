@@ -26,20 +26,19 @@ class Role(SQLModel, table=True):
     def __ge__(self, _in):
         if isinstance(_in, RoleLevel):
             return self.level >= _in.value
-
-        return super().__eq__(_in)
+        return super().__ge__(_in)
 
     def __gt__(self, _in):
         if isinstance(_in, RoleLevel):
             return self.level > _in.value
-        return super().__eq__(_in)
+        return super().__gt__(_in)
 
     def __le__(self, _in):
         if isinstance(_in, RoleLevel):
             return self.level <= _in.value
-        return super().__eq__(_in)
+        return super().__le__(_in)
 
     def __lt__(self, _in):
         if isinstance(_in, RoleLevel):
             return self.level < _in.value
-        return super().__eq__(_in)
+        return super().__lt__(_in)
