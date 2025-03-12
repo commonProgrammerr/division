@@ -1,10 +1,17 @@
-from .validation import get_access_key_by_value
-from division.tasks import WatchDog, mqtt
+from sqlmodel import Session
+
+from division.database import engine
+from .validation import get_key_by_value
 
 
-def watch_dog():
-    watch_dog = WatchDog(mqtt.CallbackAPIVersion.VERSION2)
-    watch_dog.start()
+def validate_key(**key):
+    with Session(engine) as session:
+        return get_key_by_value(session, **key)
 
 
-__all__ = ["watch_dog", "get_access_key_by_value"]
+def init_db():
+    from division.database import models, engine
+    from division.database.seed import populate_database
+
+    models.SQLModel.metadata.create_all(bind=engine)
+    populate_database(engine)

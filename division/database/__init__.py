@@ -5,17 +5,13 @@ from sqlmodel import Session, create_engine
 
 from division.config import settings
 from division import models
-from .seed import populate_database
+from . import user, role, access_key, lock
 
 engine = create_engine(
     settings.DATABASE_URI,  # pyright: ignore
     echo=False,  # pyright: ignore
     # connect_args=settings.db.connect_args,  # pyright: ignore
 )
-
-models.SQLModel.metadata.create_all(bind=engine)
-
-populate_database(engine)
 
 
 def get_session():
@@ -25,4 +21,4 @@ def get_session():
 
 ActiveSession = Depends(get_session)
 
-__all__ = ["get_session", "engine", "ActiveSession"]
+__all__ = ["get_session", "engine", "ActiveSession", "user", "role", "access_key", "lock", "models"]

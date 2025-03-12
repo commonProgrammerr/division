@@ -29,13 +29,18 @@ def start():
 
 
 @main.command()
-@click.argument("key", type=click.STRING)
+def init():
+    core.init_db()
+
+
+@main.command()
+@click.argument("value", type=click.STRING)
 @click.option("--type", default=AccessKeyType.PASSWORD, type=AccessKeyType)
-def validate(key, type):
+def validate(**kargs):
     """Validate a given key..."""
     console = Console()
     try:
-        key = core.get_access_key_by_value(key_type=type, key_value=key)
+        key = core.validate_key(**kargs)
         table = Table()
         table.add_column("User")
         table.add_column("Role")
@@ -50,5 +55,5 @@ def validate(key, type):
         )
 
         console.print(table)
-    except RuntimeError:
+    except Exception:
         console.print_exception()
